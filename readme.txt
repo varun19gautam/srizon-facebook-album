@@ -1,7 +1,7 @@
 === Srizon Facebook Album ===
 Contributors: afzal_du
-Donate link: 
-Tags: Facebook, Album, Gallery, Photo Album, Photo Gallery, Facebook Connect
+Donate link: http://www.srizon.com/wordpress-plugin/srizon-facebook-album
+Tags: Facebook, Album, Gallery, Photo Album, Photo Gallery, Facebook Connect, Facebook Album, Facebook Gallery
 Requires at least: 3.3
 Tested up to: 3.5
 Stable tag: 1.0.0
@@ -20,7 +20,7 @@ This Free version shows only 25 images per album and 25 (or less) album covers p
 = Pro Version =
 Pro version shows All the images from each album and all the album vovers from each gallery. Image descriptions are also fetched for showing as image caption on lightbox.
 
-* Got to http://www.srizon.com/wordpress-plugin/srizon-facebook-album to get the pro version
+* Go to: http://www.srizon.com/wordpress-plugin/srizon-facebook-album to get the pro version
 
 == Installation ==
 
