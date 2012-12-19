@@ -37,6 +37,13 @@ Yes, You can. There's one lightbox added with this plugin. Also You'll find inst
 This Free version shows only 25 images per album and 25 (or less) album covers per gallery. Get the Pro version to show all the images.
 
 == Screenshots ==
+1. Gallery View (First Level)
+2. Gallery View (Second Level) - Similar To Album View
+3. Default Lightbox (Any lightbox can be added)
+4. Common Option panel (admin)
+5. Albums Page (admin)
+6. Gallery Page (admin)
+7. Adding New Gallery (Adding new album is similar)
 
 == Changelog ==
 
