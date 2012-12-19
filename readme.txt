@@ -14,6 +14,14 @@ This wordpress plugin fetches the facebook albums or the whole galleries from yo
 
 This wordpress plugin fetches the facebook albums or the whole galleries from your Facebook Fanpage/Fanpages and display them on your site as albums and galleries. You can add as many albums and galleires as you want. It will generate the shortcodes automatically which you can copy/paste into your post or page
 
+= Free Version's Limitation =
+This Free version shows only 25 images per album and 25 (or less) album covers per gallery. Also image caption (or description) is not fetched from facebook to show below the lightbox
+
+= Pro Version =
+Pro version shows All the images from each album and all the album vovers from each gallery. Image descriptions are also fetched for showing as image caption on lightbox.
+
+* Got to http://www.srizon.com/wordpress-plugin/srizon-facebook-album to get the pro version
+
 == Installation ==
 
 1. Upload srizon-facebook-album folder to the `/wp-content/plugins/` directory
@@ -22,9 +30,11 @@ This wordpress plugin fetches the facebook albums or the whole galleries from yo
 
 == Frequently asked questions ==
 
-Can I add my own lightbox for the images
-
+= Can I add my own lightbox for the images =
 Yes, You can. There's one lightbox added with this plugin. Also You'll find instructions inside on how to add fancybox as your lightbox. The process of adding other lightbox should be similar.
+
+= Why there's only 25 images on my album =
+This Free version shows only 25 images per album and 25 (or less) album covers per gallery. Get the Pro version to show all the images.
 
 == Screenshots ==
 
