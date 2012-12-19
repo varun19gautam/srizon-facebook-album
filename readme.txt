@@ -4,7 +4,7 @@ Donate link:
 Tags: Facebook, Album, Gallery, Photo Album, Photo Gallery, Facebook Connect
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,15 +28,7 @@ Yes, You can. There's one lightbox added with this plugin. Also You'll find inst
 
 == Screenshots ==
 
-
-
 == Changelog ==
 
-1.0.0
-First Release
-
-== Upgrade notice ==
-
-
-
-== Arbitrary section 1 ==
+= 1.0.0 =
+* First Release
