@@ -1,3 +1,26 @@
+<?php
+if(!file_exists(dirname(__FILE__).'/srizon-fb-album-front-pro.php')){
+SrizonFBUI::BoxHeader('box1', "Get Pro Version", true);
+?>
+<div>
+	<h4>Limitations of this version</h4>
+	<ol>
+		<li>Each album can display only 25 images or less</li>
+		<li>Each gallery can display 25 or less album covers. Each cover will open an album with not more than 25 images</li>
+		<li>No caption for images</li>
+	</ol>
+	<h4>What's In pro version</h4>
+	<ol>
+		<li>Each album can display all the images from facebook. No limitation</li>
+		<li>Each gallery will show all the album covers. Each cover will open the full album</li>
+		<li>Description of each image from facebook will be used as image caption which is shown below the lightbox photo</li>
+		<li>For each gallery you can Include a selected few albums or exclude a few albums and show all other albums</li>
+	</ol>
+</div>
+<?php 
+SrizonFBUI::BoxFooter();
+}
+?>
 <?php SrizonFBUI::BoxHeader('box2', "Lightbox Options (Common for all albums)", true);?>
 <form action="admin.php?page=SrzFb" method="post">
 	<table>
@@ -47,6 +70,7 @@ SrizonFBUI::BoxHeader('box3', "How to setup other lightbox: (An example showing 
 			<td>
 				<ol>
 					<li>Select 'Other Lightbox' above</li>
+					<li>Put rel="something" on the next field (should be already there by default) and save</li>
 					<li>Install <a target="_blank" href="http://wordpress.org/extend/plugins/fancybox-for-wordpress/">FancyBox for Wordpress</a></li>
 					<li>After installation and activation of FancyBox plugin go to it's settings panel</li>
 					<li>Select 'Extra Calls' Tab</li>

@@ -12,7 +12,7 @@ function srz_fb_gallery_shortcode($atts){
 	}
 	if (!isset($GLOBALS['imggroup'])) $GLOBALS['imggroup'] = 1;
 	else $GLOBALS['imggroup']++;
-	if($set=='') $images = srz_fb_get_fb_gallery($page['pageid'],$page['shuffle_albums'],$page['excludeids'],$page['updatefeed']*60);
+	if($set=='') $images = srz_fb_get_fb_gallery($page['pageid'],$page['shuffle_albums'],$page['updatefeed']*60);
 	else $images = srz_fb_get_album_api($set, $page['shuffle_images'],$page['updatefeed']*60);
 	//$images = array_slice($images_all,0,$page['totalimg']);
 	$common_options = SrizonFBDB::GetCommonOpt();
@@ -115,7 +115,7 @@ function srz_fb_render_fullpage_gallery($page,$images,$common_options){
 				$title2  = substr($title2,0,$page['truncate_len']).'...';
 			}
 			$topheight = $page['thumbheight']+5;
-			$data.= '<div class="titlebelow" style="width:'.$page['thumbwidth'].'px; top:'.$topheight.'px; height:50px;">'.$link.$title2.'</a></div>';
+			$data.= '<div class="titlebelow" style="width:'.$page['thumbwidth'].'px; top:'.$topheight.'px; height:'.$page['titlethumb_height'].'px;">'.$link.$title2.'</a></div>';
 		}
 
 		$data.= '</div>';
@@ -169,7 +169,7 @@ function srz_fb_get_pagetitle($pageid,$set){
 	return '';
 }
 
-function srz_fb_get_fb_gallery($pageid,$shuffle_albums,$albumids_exclude,$cachetime){
+function srz_fb_get_fb_gallery($pageid,$shuffle_albums,$cachetime){
 	if(isset($_GET['debugjfb'])){
 		echo 'Dumping page ID<pre>';
 		print_r($pageid);
@@ -197,7 +197,6 @@ function srz_fb_get_fb_gallery($pageid,$shuffle_albums,$albumids_exclude,$cachet
 		foreach( $json->data as $obj ){
 			$count = isset($obj->count)?$obj->count:'';
 			if(!$count) continue;
-			if(in_array($obj->id, $albumids_arr)) continue;
 			$images[$i]['src'] = 'http://graph.facebook.com/' . $obj->cover_photo . '/picture?type=normal';
 			$images[$i]['title'] = isset($obj->name)?$obj->name:'Untitled Album';
 			$images[$i]['title'] = htmlspecialchars($images[$i]['title']);

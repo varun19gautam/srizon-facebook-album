@@ -12,13 +12,33 @@
 		<input type="text" name="pageid" size="25" value="<?php echo $value_arr['pageid'];?>" /></div>
 	<?php 
 	SrizonFBUI::BoxFooter();
-	SrizonFBUI::BoxHeader('box3', "Albums to exclude: Put Album ID(s)", true);
+	SrizonFBUI::BoxHeader('box3', "Albums to include/exclude: Put Album ID(s)", true);
+	if(!file_exists(dirname(__FILE__).'/srizon-fb-album-front-pro.php')){
+		echo '<em>Only in pro version</em>';
+	}
+	else{
 	?>
 	<div>
 		<div>If the album link(URL) is <span style="color:blue;">http://www.facebook.com/media/set/?set=a.<strong>number1</strong>.number2.number3...</span> then the ID is <strong>number1</strong> which should be put in this field.</div>
 		<textarea name="options[excludeids]" rows="5" cols="20"><?php echo $value_arr['excludeids'];?></textarea>
 		<div>Separate multiple IDs with newline or whitespace</div></div>
+
+		<?php
+			$chk1 = $chk2 = '';
+			if($value_arr['include_exclude'] == 'include'){
+				$chk2 = ' checked="checked"';
+			}
+			else{
+				$chk1 = ' checked="checked"';
+			}
+		?>
+		<br />
+		<input type="radio" name="options[include_exclude]" value="exclude"<?php echo $chk1;?> />Exclude These Albums
+		<br />
+		<input type="radio" name="options[include_exclude]" value="include"<?php echo $chk2;?> />Show Only These Albums
+
 	<?php 
+	}
 	SrizonFBUI::BoxFooter();
 	SrizonFBUI::BoxHeader('box4', "Options", true);
 	?>
