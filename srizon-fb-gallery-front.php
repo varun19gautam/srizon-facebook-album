@@ -197,7 +197,6 @@ function srz_fb_get_fb_gallery($pageid,$shuffle_albums,$albumids_exclude,$cachet
 		foreach( $json->data as $obj ){
 			$count = isset($obj->count)?$obj->count:'';
 			if(!$count) continue;
-			if(in_array($obj->id, $albumids_arr)) continue;
 			$images[$i]['src'] = 'http://graph.facebook.com/' . $obj->cover_photo . '/picture?type=normal';
 			$images[$i]['title'] = isset($obj->name)?$obj->name:'Untitled Album';
 			$images[$i]['title'] = htmlspecialchars($images[$i]['title']);
