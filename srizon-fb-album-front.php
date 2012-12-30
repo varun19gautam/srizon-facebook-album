@@ -188,14 +188,24 @@ function srz_fb_remote_to_data($url){
 	if(!$data){
 		require_once (dirname(__FILE__) . '/mycurl.php');
 		if(isset($_GET['debugjfb'])){
-			echo 'file_get_contents failed... trying curl';
+			echo "\n".'file_get_contents failed... trying wp_remote_get and curl';
 		}
-		$fbcurl = new SrzFBMycurl($url);
-		$fbcurl->createCurl();
-		$fbcurl->setUserAgent('');
-		$fbcurl->setCookiFileLocation('');
-		$fbcurl->setReferer('');
-		$data = $fbcurl->tostring();
+		$data1 = wp_remote_get($url);
+		if(is_array($data1) and isset($data1['body']))
+		{
+			$data = $data1['body'];
+		}
+		else{
+			$fbcurl = new SrzFBMycurl($url);
+			$fbcurl->createCurl();
+			$fbcurl->setUserAgent('');
+			$fbcurl->setCookiFileLocation('');
+			$fbcurl->setReferer('');
+			$data = $fbcurl->tostring();
+			if(isset($_GET['debugjfb'])){
+				echo "\n".'wp_remote_get and curl failed to get the api response. either the pageid or albumid is wrong or your server is blocking all remote connection functions!';
+			}
+		}
 	}
 	return $data;
 }

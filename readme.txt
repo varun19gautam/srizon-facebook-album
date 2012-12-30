@@ -4,7 +4,7 @@ Donate link: http://www.srizon.com/wordpress-plugin/srizon-facebook-album
 Tags: Facebook, Album, Gallery, Photo Album, Photo Gallery, Facebook Connect, Facebook Album, Facebook Gallery
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ This wordpress plugin fetches the facebook albums or the whole galleries from yo
 This Free version shows only 25 images per album and 25 (or less) album covers per gallery. Also image caption (or description) is not fetched from facebook to show below the lightbox
 
 = Pro Version =
-Pro version shows All the images from each album and all the album vovers from each gallery. Image descriptions are also fetched for showing as image caption on lightbox.
+Pro version shows All the images from each album and all the album covers from each gallery. Image descriptions are also fetched for showing as image caption on lightbox.
 You can also include/exclude albums in gallery view in pro version
 
 * Go to: http://www.srizon.com/wordpress-plugin/srizon-facebook-album to get the pro version
@@ -53,3 +53,6 @@ This Free version shows only 25 images per album and 25 (or less) album covers p
 
 = 1.1.0 =
 *Minor Edit
+
+= 1.1.1 =
+*Added wp_remote_get as an alternative for getting the api response.
