@@ -16,6 +16,8 @@ SrizonFBUI::BoxHeader('box1', "Get Pro Version", true);
 		<li>Description of each image from facebook will be used as image caption which is shown below the lightbox photo</li>
 		<li>For each gallery you can Include a selected few albums or exclude a few albums and show all other albums</li>
 	</ol>
+	<h4>Get the pro version now</h4>
+	<a href="http://www.srizon.com/wordpress-plugin/srizon-facebook-album">http://www.srizon.com/wordpress-plugin/srizon-facebook-album</a>
 </div>
 <?php 
 SrizonFBUI::BoxFooter();
