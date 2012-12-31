@@ -13,6 +13,8 @@ This wordpress plugin fetches the facebook albums or the whole galleries from yo
 == Description ==
 
 This wordpress plugin fetches the facebook albums or the whole galleries from your Facebook Fanpage/Fanpages and display them on your site as albums and galleries. You can add as many albums and galleires as you want. It will generate the shortcodes automatically which you can copy/paste into your post or page
+= Demo =
+*http://promy.srizon.com/wp/
 
 = Free Version's Limitation =
 This Free version shows only 25 images per album and 25 (or less) album covers per gallery. Also image caption (or description) is not fetched from facebook to show below the lightbox
