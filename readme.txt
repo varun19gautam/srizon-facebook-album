@@ -30,6 +30,8 @@ You can also include/exclude albums in gallery view in pro version
 1. Upload srizon-facebook-album folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Go to the admin Menu 'FB Album' and Submenus under it to create albums and galleries
+4. Get the auto generated shortcode and copy/paste into a page or post
+5. Some template inserts extra <p> tags into the plugin's output which breaks the layout. In that case try using raw around the shortcode... like [raw]auto_generated_shortcode_here[/raw] (example: [raw][srizonfbgallery id=1][/raw] )
 
 == Frequently asked questions ==
 
@@ -38,6 +40,10 @@ Yes, You can. There's one lightbox added with this plugin. Also You'll find inst
 
 = Why there's only 25 images on my album =
 This Free version shows only 25 images per album and 25 (or less) album covers per gallery. Get the Pro version to show all the images.
+
+= Why the layout breaks on my template =
+Your template is using custom formatter overriding default wordpress formatter. Try using [raw]...[/raw] around the shortcode.
+Example: [raw][srizonfbgallery id=1][/raw]
 
 == Screenshots ==
 1. Gallery View (First Level)
