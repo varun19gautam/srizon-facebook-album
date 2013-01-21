@@ -74,7 +74,7 @@ function srz_fb_render_fullpage($album,$images,$common_options){
 	}
 	$totalpages = ceil($totimg/$album['paginatenum']);
 	if($totalpages > 1){
-		$url = get_page_link();
+		$url = $_SERVER['REQUEST_URI'];//get_page_link();
 		if($jfpos = strpos($url,'jfpage')){
 			$url=substr($url,0,$jfpos-1);
 		}

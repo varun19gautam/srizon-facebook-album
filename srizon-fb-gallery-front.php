@@ -43,7 +43,7 @@ function srz_fb_render_fullpage_gallery($page,$images,$common_options){
 	$set = isset($_GET['id'])?$_GET['id']:'';
 	if($set){ 
 		$pagetitle = srz_fb_get_pagetitle($page['pageid'],$set);
-		$url = get_page_link();
+		$url = $_SERVER['REQUEST_URI'];//get_page_link();
 		if($pos1 = strpos($url,'?id=')){
 			$url = substr($url,0,$pos1);
 		}
@@ -70,7 +70,7 @@ function srz_fb_render_fullpage_gallery($page,$images,$common_options){
 			$link = '<a style="width:'.$page['thumbwidth'].'px; height:'.$page['thumbheight'].'px;" href="'. $image['src'].'" title="'.  nl2br($image['txt']).'" '.$common_options['lightboxattrib'].'>';
 		}
 		else{
-			$url = get_page_link();
+			$url = $_SERVER['REQUEST_URI'];//get_page_link();
 			if(strpos($url,'&jfpage')){
 				$url=substr($url,0,strpos($url,'&jfpage'));
 			}
@@ -122,7 +122,7 @@ function srz_fb_render_fullpage_gallery($page,$images,$common_options){
 	}
 	$totalpages = ceil($totimg/$page['paginatenum']);
 	if($totalpages > 1){
-		$url = get_page_link();
+		$url = $_SERVER['REQUEST_URI'];//get_page_link();
 		if($jfpos = strpos($url,'jfpage')){
 			$url=substr($url,0,$jfpos-1);
 		}
