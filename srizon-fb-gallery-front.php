@@ -19,6 +19,10 @@ function srz_fb_gallery_shortcode($atts){
 	if($common_options['loadlightbox'] == 'yes'){
 		$common_options['lightboxattrib'] = 'data-srizonsb="srzlightbox-'.$GLOBALS['imggroup'].'"';
 	}
+	else if($common_options['loadlightbox'] == 'mp'){
+		$common_options['secondclass'] = ' mpjfb';
+		$common_options['lightboxattrib'] = '';
+	}
 	else{
 		$common_options['lightboxattrib'] = stripslashes($common_options['lightboxattrib']);
 	}
@@ -43,6 +47,7 @@ function srz_fb_render_fullpage_gallery($page,$images,$common_options){
 	$set = isset($_GET['id'])?$_GET['id']:'';
 	if($set){ 
 		$pagetitle = srz_fb_get_pagetitle($page['pageid'],$set);
+		if(!$pagetitle) return '';
 		$url = $_SERVER['REQUEST_URI'];//get_page_link();
 		if($pos1 = strpos($url,'?id=')){
 			$url = substr($url,0,$pos1);
@@ -56,7 +61,7 @@ function srz_fb_render_fullpage_gallery($page,$images,$common_options){
 		$pagetitle.=' - <a href="'.$url.'">[Back to Gallery]</a>';
 		$data.= '<h2 class="entry-title" style="font-size:18px;">'.$pagetitle.'</h2>';
 	}
-	if($set) $data.= '<div class="jfbalbum" id="jfbalbum-'.$GLOBALS['imggroup'].'">';
+	if($set) $data.= '<div class="jfbalbum'.$common_options['secondclass'].'" id="jfbalbum-'.$GLOBALS['imggroup'].'">';
 	else $data.= '<div class="jfbgallery" id="jfbalbum-'.$GLOBALS['imggroup'].'">';
 	$totimg = count($images);
 	$getjfpage = isset($_GET['jfpage'])?$_GET['jfpage']:0;
@@ -67,7 +72,7 @@ function srz_fb_render_fullpage_gallery($page,$images,$common_options){
 		$image = $images[$j];
 
 		if($set!=''){
-			$link = '<a style="width:'.$page['thumbwidth'].'px; height:'.$page['thumbheight'].'px;" href="'. $image['src'].'" title="'.  nl2br($image['txt']).'" '.$common_options['lightboxattrib'].'>';
+			$link = '<a class="aimg" style="width:'.$page['thumbwidth'].'px; height:'.$page['thumbheight'].'px;" href="'. $image['src'].'" title="'.  nl2br($image['txt']).'" '.$common_options['lightboxattrib'].'>';
 		}
 		else{
 			$url = $_SERVER['REQUEST_URI'];//get_page_link();

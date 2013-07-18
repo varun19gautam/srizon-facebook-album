@@ -2,8 +2,11 @@
 function srz_fb_enqueue_script(){
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('srzsb',  srz_fb_get_resource_url('js/sb/srzsb.js'),array('jquery'));
+	wp_enqueue_script('srzmp',  srz_fb_get_resource_url('js/mag-popup.js'),array('jquery'));
+	wp_enqueue_script('srzmpinit',  srz_fb_get_resource_url('js/srz-mag-init.js'),array('srzmp'));
 	wp_enqueue_style('srzfbstyles',  srz_fb_get_resource_url('css/srzfbstyles.css'));
 	wp_enqueue_style('srzsbcss',  srz_fb_get_resource_url('js/sb/srzsb.css'));
+	wp_enqueue_style('srzmpcss',  srz_fb_get_resource_url('css/mag-popup.css'));
 }
 
 function srz_fb_album_shortcode($atts){
@@ -24,6 +27,10 @@ function srz_fb_album_shortcode($atts){
 	$common_options = SrizonFBDB::GetCommonOpt();
 	if($common_options['loadlightbox'] == 'yes'){
 		$common_options['lightboxattrib'] = 'data-srizonsb="srzlightbox-'.$GLOBALS['imggroup'].'"';
+	}
+	else if($common_options['loadlightbox'] == 'mp'){
+		$common_options['secondclass'] = ' mpjfb';
+		$common_options['lightboxattrib'] = '';
 	}
 	else{
 		$common_options['lightboxattrib'] = stripslashes($common_options['lightboxattrib']);
@@ -47,7 +54,7 @@ function srz_fb_album_shortcode($atts){
 
 function srz_fb_render_fullpage($album,$images,$common_options){
 	$output = '';
-	$output.='<div class="jfbalbum" id="jfbalbum-'.$GLOBALS['imggroup'].'">';
+	$output.='<div class="jfbalbum'.$common_options['secondclass'].'" id="jfbalbum-'.$GLOBALS['imggroup'].'">';
 	$totimg = count($images);
 	$getjfpage = isset($_GET['jfpage'])?$_GET['jfpage']:0;
 	$jf_start = $getjfpage*$album['paginatenum'];
@@ -67,7 +74,7 @@ function srz_fb_render_fullpage($album,$images,$common_options){
 			$thumb_img = str_replace('_n.jpg', '_a.jpg', $image['src']);
 		}
 
-		$link = '<a style="width:'.$album['thumbwidth'].'px; height:'.$album['thumbheight'].'px;" href="'. $image['src'].'" title="'.  nl2br($image['txt']).'" '.$common_options['lightboxattrib'].'>';
+		$link = '<a class="aimg" style="width:'.$album['thumbwidth'].'px; height:'.$album['thumbheight'].'px;" href="'. $image['src'].'" title="'.  nl2br($image['txt']).'" '.$common_options['lightboxattrib'].'>';
 		$imgcode = 'style="width:'.$album['thumbwidth'].'px; height:'.$album['thumbheight'].'px; background-image: url('.$thumb_img.');"';
 		$output.= $link.'<div class="'.$imgboxclass.'" '.$imgcode.'></div></a>';
 		$output.= '</div>';

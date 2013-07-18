@@ -22,6 +22,16 @@ SrizonFBUI::BoxHeader('box1', "Get Pro Version", true);
 <?php 
 SrizonFBUI::BoxFooter();
 }
+else if(!function_exists('srz_fb_version_1_1_4')){
+SrizonFBUI::BoxHeader('box1', "Get Updated Pro Pack", true);
+?>
+<div style="color: red;">
+Get the upated pro pack from the developer. Send an email to <a href="mailto:afzal.csedu@gmail.com">afzal.csedu@gmail.com</a> with your purchase email or purchase id to get the update. <br />
+Without this update you'll not be able to use the newly added responsive lightbox called 'Magnificent Popup' but everything else will work the same.
+</div>
+<?php
+SrizonFBUI::BoxFooter();
+}
 ?>
 <?php SrizonFBUI::BoxHeader('box2', "Lightbox Options (Common for all albums)", true);?>
 <form action="admin.php?page=SrzFb" method="post">
@@ -36,11 +46,15 @@ SrizonFBUI::BoxFooter();
 					if($optvar['loadlightbox'] == 'no'){
 						$chk2 = ' checked="checked"';
 					}
+					else if($optvar['loadlightbox'] == 'mp'){
+						$chk3 = ' checked="checked"';
+					}
 					else{
 						$chk1 = ' checked="checked"';
 					}
 				?>
-				<input type="radio" name="loadlightbox" value="yes"<?php echo $chk1;?> />Built in Slimbox
+				<input type="radio" name="loadlightbox" value="yes"<?php echo $chk1;?> />Built in Slimbox <br />
+				<input type="radio" name="loadlightbox" value="mp"<?php echo $chk3;?> />Built in Magnificent Popup (Responsive) <br />
 				<input type="radio" name="loadlightbox" value="no"<?php echo $chk2;?> />Other Lightbox
 			</td>
 		</tr>

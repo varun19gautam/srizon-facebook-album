@@ -4,7 +4,7 @@ Donate link: http://www.srizon.com/wordpress-plugin/srizon-facebook-album
 Tags: Facebook, Album, Gallery, Photo Album, Photo Gallery, Facebook Connect, Facebook Album, Facebook Gallery
 Requires at least: 3.3
 Tested up to: 3.5
-Stable tag: 1.1.2
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,8 @@ You can also include/exclude albums in gallery view in pro version
 3. Go to the admin Menu 'FB Album' and Submenus under it to create albums and galleries
 4. Get the auto generated shortcode and copy/paste into a page or post
 5. Some template inserts extra <p> tags into the plugin's output which breaks the layout. In that case try using raw around the shortcode... like [raw]auto_generated_shortcode_here[/raw] (example: [raw][srizonfbgallery id=1][/raw] )
+if your template doesn't support [raw] tag then you may also need to install this plugin
+* http://wordpress.org/plugins/raw-html/
 
 == Frequently asked questions ==
 
@@ -44,6 +46,8 @@ This Free version shows only 25 images per album and 25 (or less) album covers p
 = Why the layout breaks on my template =
 Your template is using custom formatter overriding default wordpress formatter. Try using [raw]...[/raw] around the shortcode.
 Example: [raw][srizonfbgallery id=1][/raw]
+if your template doesn't support [raw] tag then you may also need to install this plugin
+* http://wordpress.org/plugins/raw-html/
 
 == Screenshots ==
 1. Gallery View (First Level)
@@ -64,3 +68,12 @@ Example: [raw][srizonfbgallery id=1][/raw]
 
 = 1.1.1 =
 *Added wp_remote_get as an alternative for getting the api response.
+
+= 1.1.2 =
+*bugfix
+
+= 1.1.3 =
+*bugfix
+
+= 1.1.4 =
+*Responsive lightbox 'Magnificent Popup' Added
