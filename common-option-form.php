@@ -1,6 +1,5 @@
 <?php
-if(!file_exists(dirname(__FILE__).'/srizon-fb-album-front-pro.php')){
-SrizonFBUI::BoxHeader('box1', "Get Pro Version", true);
+SrizonFBUI::BoxHeader('box1', "Get The Pro Version", true);
 ?>
 <div>
 	<h4>Limitations of this version</h4>
@@ -9,7 +8,7 @@ SrizonFBUI::BoxHeader('box1', "Get Pro Version", true);
 		<li>Each gallery can display 25 or less album covers. Each cover will open an album with not more than 25 images</li>
 		<li>No caption for images</li>
 	</ol>
-	<h4>What's In pro version</h4>
+	<h4>What's in the pro version</h4>
 	<ol>
 		<li>Each album can display all the images from facebook. No limitation</li>
 		<li>Each gallery will show all the album covers. Each cover will open the full album</li>
@@ -17,23 +16,23 @@ SrizonFBUI::BoxHeader('box1', "Get Pro Version", true);
 		<li>For each gallery you can Include a selected few albums or exclude a few albums and show all other albums</li>
 	</ol>
 	<h4>Get the pro version now</h4>
-	<a href="http://www.srizon.com/wordpress-plugin/srizon-facebook-album">http://www.srizon.com/wordpress-plugin/srizon-facebook-album</a>
-</div>
-<?php 
-SrizonFBUI::BoxFooter();
-}
-else if(!function_exists('srz_fb_version_1_1_4')){
-SrizonFBUI::BoxHeader('box1', "Get Updated Pro Pack", true);
-?>
-<div style="color: red;">
-Get the upated pro pack from the developer. Send an email to <a href="mailto:afzal.csedu@gmail.com">afzal.csedu@gmail.com</a> with your purchase email or purchase id to get the update. <br />
-Without this update you'll not be able to use the newly added responsive lightbox called 'Magnificent Popup' but everything else will work the same.
+	<a target="_blank" href="http://www.srizon.com/wordpress-plugin/srizon-facebook-album">http://www.srizon.com/wordpress-plugin/srizon-facebook-album</a>
+	<p>If you already have purchased the pro version contact the developer (afzal.csedu@gmail.com) with your purchase ID or email address you used for purchasing.</p>
 </div>
 <?php
 SrizonFBUI::BoxFooter();
-}
 ?>
-<?php SrizonFBUI::BoxHeader('box2', "Lightbox Options (Common for all albums)", true);?>
+<?php 
+SrizonFBUI::BoxHeader('box0', "What to do");
+	echo '<p><ol>
+<li>Click on the Albums or Galleries submenu</li>		
+<li>Click "Add New" button to add a new album or gallery. (or click on an existing album title to edit that)</li>
+<li>Fill-up or modify the form and save that</li>
+<li>Your albums or galleries will be listed along with the shortcodes. Use the shortcodes into your page/post to show the photo album or gallery</li>
+<li>Try out different options to suit your need</li>
+</ol></p>';
+SrizonFBUI::BoxFooter();
+SrizonFBUI::BoxHeader('box2', "Lightbox Options (Common for all albums)", true);?>
 <form action="admin.php?page=SrzFb" method="post">
 	<table>
 		<tr>
@@ -41,21 +40,9 @@ SrizonFBUI::BoxFooter();
 				<span class="label">Use Lightbox:</span>
 			</td>
 			<td>
-				<?php
-					$chk1 = $chk2 = '';
-					if($optvar['loadlightbox'] == 'no'){
-						$chk2 = ' checked="checked"';
-					}
-					else if($optvar['loadlightbox'] == 'mp'){
-						$chk3 = ' checked="checked"';
-					}
-					else{
-						$chk1 = ' checked="checked"';
-					}
-				?>
-				<input type="radio" name="loadlightbox" value="yes"<?php echo $chk1;?> />Built in Slimbox <br />
-				<input type="radio" name="loadlightbox" value="mp"<?php echo $chk3;?> />Built in Magnificent Popup (Responsive) <br />
-				<input type="radio" name="loadlightbox" value="no"<?php echo $chk2;?> />Other Lightbox
+				<input type="radio" name="loadlightbox" value="yes"<?php if($optvar['loadlightbox'] == 'yes') echo ' checked="checked"';?> />Built in Slimbox <br />
+				<input type="radio" name="loadlightbox" value="mp"<?php if($optvar['loadlightbox'] == 'mp') echo ' checked="checked"';?> />Built in Magnificent Popup (Responsive) <br />
+				<input type="radio" name="loadlightbox" value="no"<?php if($optvar['loadlightbox'] == 'no') echo ' checked="checked"';?> />Other Lightbox
 			</td>
 		</tr>
 		<tr>

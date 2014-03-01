@@ -20,7 +20,7 @@
 	?>
 	<div>
 		<div>If the album link(URL) is <span style="color:blue;">http://www.facebook.com/media/set/?set=a.<strong>number1</strong>.number2.number3...</span> then the ID is <strong>number1</strong> which should be put in this field.</div>
-		<textarea name="options[excludeids]" rows="5" cols="20"><?php echo $value_arr['excludeids'];?></textarea>
+		<textarea name="options[excludeids]" rows="5" cols="20"><?php if(isset($value_arr['excludeids'])) echo $value_arr['excludeids'];?></textarea>
 		<div>Separate multiple IDs with newline or whitespace</div></div>
 
 		<?php

@@ -14,7 +14,7 @@ class SrizonFBDB{
 		if(!empty($optvar)) return $optvar;
 		else{
 			$optvardef = array();
-			$optvardef['loadlightbox'] = 'yes';
+			$optvardef['loadlightbox'] = 'mp';
 			$optvardef['lightboxattrib'] = 'class="lightbox" rel="lightbox"';
 			add_option('srzfbcomm',$optvardef,'',true);
 			return $optvardef;
