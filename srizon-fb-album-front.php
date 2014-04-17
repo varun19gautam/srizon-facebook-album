@@ -159,6 +159,10 @@ function srz_fb_get_album_api($albumids, $shuffle_images, $cachetime){
 			if(is_array($json->data)){
 				foreach($json->data as $obj){
 					$images[$i]['src'] = $obj->picture;
+					if(strpos($images[$i]['src'],'?oh=')){
+						$images[$i]['src'] = substr($images[$i]['src'],0,strpos($images[$i]['src'],'?oh='));
+						$images[$i]['src'] = str_replace('/v/','/',$images[$i]['src']);
+					}
 					$images[$i]['src'] = str_replace('_s.jpg', '_n.jpg', $images[$i]['src']);
 					$images[$i]['src'] = str_replace('_s.png', '_n.png', $images[$i]['src']);
 					$images[$i]['txt'] = isset($obj->name)?$obj->name:'';

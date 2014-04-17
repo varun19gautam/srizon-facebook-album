@@ -23,7 +23,7 @@ class SrizonFBDB{
 	
 	static function SaveAlbum($new=false){
 		global $wpdb;
-		$table = $wpdb->prefix.'srzfb_albums';
+		$table = $wpdb->base_prefix.'srzfb_albums';
 		$data['title'] = $_POST['title'];
 		$data['albumid'] = $_POST['albumid'];
 		$data['options'] = serialize($_POST['options']);
@@ -38,7 +38,7 @@ class SrizonFBDB{
 	}
 	static function SaveGallery($new=false){
 		global $wpdb;
-		$table = $wpdb->prefix.'srzfb_galleries';
+		$table = $wpdb->base_prefix.'srzfb_galleries';
 		$data['title'] = $_POST['title'];
 		$data['pageid'] = trim($_POST['pageid']);
 		$data['options'] = serialize($_POST['options']);
@@ -53,7 +53,7 @@ class SrizonFBDB{
 	}
 	static function GetAlbum($id){
 		global $wpdb;
-		$table = $wpdb->prefix.'srzfb_albums';
+		$table = $wpdb->base_prefix.'srzfb_albums';
 		$q = $wpdb->prepare("SELECT * FROM $table WHERE id = %d",$id);
 		$album = $wpdb->get_row($q);
 		if(!$album) return false;
@@ -70,7 +70,7 @@ class SrizonFBDB{
 	
 	static function GetGallery($id){
 		global $wpdb;
-		$table = $wpdb->prefix.'srzfb_galleries';
+		$table = $wpdb->base_prefix.'srzfb_galleries';
 		$q = $wpdb->prepare("SELECT * FROM $table WHERE id = %d",$id);
 		$album = $wpdb->get_row($q);
 		$ret = array();
@@ -86,21 +86,21 @@ class SrizonFBDB{
 	
 	static function GetAllAlbums(){
 		global $wpdb;
-		$table = $wpdb->prefix.'srzfb_albums';
+		$table = $wpdb->base_prefix.'srzfb_albums';
 		$albums = $wpdb->get_results( "SELECT id, title FROM $table" );
 		return $albums;
 	}
 	
 	static function GetAllGalleries(){
 		global $wpdb;
-		$table = $wpdb->prefix.'srzfb_galleries';
+		$table = $wpdb->base_prefix.'srzfb_galleries';
 		$albums = $wpdb->get_results( "SELECT id, title FROM $table" );
 		return $albums;
 	}
 	
 	static function DeleteAlbum($id){
 		global $wpdb;
-		$table = $wpdb->prefix.'srzfb_albums';
+		$table = $wpdb->base_prefix.'srzfb_albums';
 		$q = $wpdb->prepare("delete from $table where id = %d",$id);
 		$wpdb->query($q);
 	}
@@ -147,15 +147,15 @@ class SrizonFBDB{
 	
 	static function DeleteGallery($id){
 		global $wpdb;
-		$table = $wpdb->prefix.'srzfb_galleries';
+		$table = $wpdb->base_prefix.'srzfb_galleries';
 		$q = $wpdb->prepare("delete from $table where id = %d", $id);
 		$wpdb->query($q);
 	}
 	
 	static function CreateDBTables(){
 		global $wpdb;
-		$t_albums = $wpdb->prefix.'srzfb_albums';
-		$t_galleries = $wpdb->prefix.'srzfb_galleries';
+		$t_albums = $wpdb->base_prefix.'srzfb_albums';
+		$t_galleries = $wpdb->base_prefix.'srzfb_galleries';
 		$sql = '
 CREATE TABLE '.$t_albums.' (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -178,8 +178,8 @@ CREATE TABLE '.$t_galleries.' (
 	
 	static function DeleteDBTables(){
 		global $wpdb;
-		$t_albums = $wpdb->prefix.'srzfb_albums';
-		$t_galleries = $wpdb->prefix.'srzfb_galleries';
+		$t_albums = $wpdb->base_prefix.'srzfb_albums';
+		$t_galleries = $wpdb->base_prefix.'srzfb_galleries';
 		$sql = 'drop table '.$t_albums.', '.$t_galleries.';';
 		$wpdb->query($sql);
 	}
