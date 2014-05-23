@@ -3,7 +3,7 @@
 Plugin Name: Srizon Facebook Album
 Plugin URI: http://www.srizon.com/wordpress-plugin/srizon-facebook-album
 Description: Show your Facebook Albums/Galleries on your WordPress Site
-Version: 1.2.0
+Version: 1.2.2
 Author: Afzal
 Author URI: http://www.srizon.com/contact
 */
