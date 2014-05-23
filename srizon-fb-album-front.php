@@ -165,6 +165,7 @@ function srz_fb_get_album_api($albumids, $shuffle_images, $cachetime){
 					}
 					$images[$i]['src'] = str_replace('_s.jpg', '_n.jpg', $images[$i]['src']);
 					$images[$i]['src'] = str_replace('_s.png', '_n.png', $images[$i]['src']);
+					$images[$i]['src'] = str_replace('/s130x130', '', $images[$i]['src']);
 					$images[$i]['txt'] = isset($obj->name)?$obj->name:'';
 					$images[$i]['txt'] = htmlspecialchars($images[$i]['txt']);
 					$i++;

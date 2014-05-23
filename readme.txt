@@ -4,7 +4,7 @@ Donate link: http://www.srizon.com/wordpress-plugin/srizon-facebook-album
 Tags: Facebook, Album, Gallery, Photo Album, Photo Gallery, Facebook Connect, Facebook Album, Facebook Gallery
 Requires at least: 3.3
 Tested up to: 3.9
-Stable tag: 1.2.0
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,10 @@ if your template doesn't support [raw] tag then you may also need to install thi
 
 = 1.1.4 =
 *Responsive lightbox 'Magnificent Popup' Added
+
 = 1.2.0 =
 *Fixed a problem where some images failed to appear for some facebook albums
 *Modified so that it works on multisite setup
+
+= 1.2.2 =
+*Fixed small image problem on lightbox
