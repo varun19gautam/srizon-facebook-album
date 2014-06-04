@@ -63,16 +63,12 @@ function srz_fb_render_fullpage($album,$images,$common_options){
 	for($j=$jf_start;$j<$jf_end;$j++){
 		$image = $images[$j];
 		$output.= '<div class="imgboxouter">';
-		if($album['thumbwidth']>180 or $album['thumbheight']>120)	{
-			$thumb_img = $image['src'];
-			$last_slash = strrpos($thumb_img, '/');
-			$part1 = substr($thumb_img, 0,$last_slash);
-			$part2 = substr($thumb_img,$last_slash);
-			$thumb_img = $part1.'/p206x206'.$part2;
-		}
-		else{
-			$thumb_img = str_replace('_n.jpg', '_a.jpg', $image['src']);
-		}
+		
+		$thumb_img = $image['src'];
+		$last_slash = strrpos($thumb_img, '/');
+		$part1 = substr($thumb_img, 0,$last_slash);
+		$part2 = substr($thumb_img,$last_slash);
+		$thumb_img = $part1.'/p206x206'.$part2;
 
 		$link = '<a class="aimg" style="width:'.$album['thumbwidth'].'px; height:'.$album['thumbheight'].'px;" href="'. $image['src'].'" title="'.  nl2br($image['txt']).'" '.$common_options['lightboxattrib'].'>';
 		$imgcode = 'style="width:'.$album['thumbwidth'].'px; height:'.$album['thumbheight'].'px; background-image: url('.$thumb_img.');"';
@@ -165,7 +161,8 @@ function srz_fb_get_album_api($albumids, $shuffle_images, $cachetime){
 					}
 					$images[$i]['src'] = str_replace('_s.jpg', '_n.jpg', $images[$i]['src']);
 					$images[$i]['src'] = str_replace('_s.png', '_n.png', $images[$i]['src']);
-					$images[$i]['src'] = str_replace('/s130x130', '', $images[$i]['src']);
+					$images[$i]['src'] = preg_replace('~/s...x.../~','/',$images[$i]['src']);
+					$images[$i]['src'] = preg_replace('~/p...x.../~','/',$images[$i]['src']);
 					$images[$i]['txt'] = isset($obj->name)?$obj->name:'';
 					$images[$i]['txt'] = htmlspecialchars($images[$i]['txt']);
 					$i++;

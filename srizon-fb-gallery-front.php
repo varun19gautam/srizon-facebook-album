@@ -45,7 +45,8 @@ function srz_fb_gallery_shortcode($atts){
 
 function srz_fb_render_fullpage_gallery($page,$images,$common_options){
 	$set = isset($_GET['id'])?$_GET['id']:'';
-	if($set){ 
+	$data = '';
+	if($set){
 		$pagetitle = srz_fb_get_pagetitle($page['pageid'],$set);
 		if(!$pagetitle) return '';
 		$url = $_SERVER['REQUEST_URI'];//get_page_link();
@@ -98,16 +99,12 @@ function srz_fb_render_fullpage_gallery($page,$images,$common_options){
 			$compheight = $page['thumbheight'];
 		}
 		if($set=='') $imgcode = 'style="position: absolute; top: 0; left: 0; width:'.$page['thumbwidth'].'px; height:'.$page['thumbheight'].'px; background-image: url('.$thumb_img.'); background-size:150%;"';
-		else {
-			if($page['thumbwidth']>180 or $page['thumbheight']>120)	{
-				$last_slash = strrpos($thumb_img, '/');
-				$part1 = substr($thumb_img, 0,$last_slash);
-				$part2 = substr($thumb_img,$last_slash);
-				$thumb_img = $part1.'/p206x206'.$part2;
-			}
-			else{
-				$thumb_img = str_replace('_n.jpg', '_a.jpg', $thumb_img);
-			}
+		else{
+			$last_slash = strrpos($thumb_img, '/');
+			$part1 = substr($thumb_img, 0,$last_slash);
+			$part2 = substr($thumb_img,$last_slash);
+			$thumb_img = $part1.'/p206x206'.$part2;
+		
 			$imgcode = 'style="width:'.$page['thumbwidth'].'px; height:'.$page['thumbheight'].'px; background-image: url('.$thumb_img.');"';
 		}
 		$data.= '<div class="imgboxouter" style="position:relative; width:'.$page['thumbwidth'].'px; height:'.$compheight.'px;">';

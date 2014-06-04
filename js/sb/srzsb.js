@@ -54,7 +54,7 @@
 			_images = [[_images, startImage]];
 			startImage = 0;
 		}
-
+		
 		middle = win.scrollTop() + (win.height() / 2);
 		centerWidth = options.initialWidth;
 		centerHeight = options.initialHeight;
@@ -64,7 +64,6 @@
 		$(overlay).css("opacity", options.overlayOpacity).fadeIn(options.overlayFadeDuration);
 		position();
 		setup(1);
-
 		images = _images;
 		options.loop = options.loop && (images.length > 1);
 		return changeImage(startImage);
