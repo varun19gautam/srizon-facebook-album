@@ -139,11 +139,18 @@ function srz_fb_get_album_api($albumids, $shuffle_images, $cachetime){
 	$images = array();
 	$i=0;
 	foreach($albumids_arr as $albumid){
+		$albumidback = $albumid.'back';
 		$contents = get_transient(md5($albumid));
 		if(!$contents or isset($_GET['forcesync'])){
 			$url = 'http://graph.facebook.com/'.$albumid.'/photos?fields=picture';
 			$contents = srz_fb_remote_to_data($url);
-			set_transient(md5($albumid), $contents, $cachetime);
+			if(strlen($contents)<=150){
+				$contents = get_transient(md5($albumidback));
+			}
+			if(strlen($contents)>150){
+				set_transient(md5($albumid), $contents, $cachetime);
+				set_transient(md5($albumidback), $contents, 1000000);
+			}
 		}
 		if(isset($_GET['debugjfb'])){
 			echo 'Dumping Contents<pre>';
@@ -161,8 +168,8 @@ function srz_fb_get_album_api($albumids, $shuffle_images, $cachetime){
 					}
 					$images[$i]['src'] = str_replace('_s.jpg', '_n.jpg', $images[$i]['src']);
 					$images[$i]['src'] = str_replace('_s.png', '_n.png', $images[$i]['src']);
-					$images[$i]['src'] = preg_replace('~/s...x.../~','/',$images[$i]['src']);
-					$images[$i]['src'] = preg_replace('~/p...x.../~','/',$images[$i]['src']);
+					$images[$i]['src'] = preg_replace('~/s...?x...?/~','/',$images[$i]['src']);
+					$images[$i]['src'] = preg_replace('~/p...?x...?/~','/',$images[$i]['src']);
 					$images[$i]['txt'] = isset($obj->name)?$obj->name:'';
 					$images[$i]['txt'] = htmlspecialchars($images[$i]['txt']);
 					$i++;

@@ -47,7 +47,7 @@ function srz_fb_render_fullpage_gallery($page,$images,$common_options){
 	$set = isset($_GET['id'])?$_GET['id']:'';
 	$data = '';
 	if($set){
-		$pagetitle = srz_fb_get_pagetitle($page['pageid'],$set);
+		$pagetitle = srz_fb_get_pagetitle($page['pageid'],$set,$page['updatefeed']*60);
 		if(!$pagetitle) return '';
 		$url = $_SERVER['REQUEST_URI'];//get_page_link();
 		if($pos1 = strpos($url,'?id=')){
@@ -131,7 +131,8 @@ function srz_fb_render_fullpage_gallery($page,$images,$common_options){
 		$url = str_replace('&', '&amp;', $url);
 		if(strpos($url,'?')) $url.='&amp;';
 		else $url.='?';
-		if(isset($_GET['id'])) $url.='id='.$_GET['id'].'&amp;';
+		$id_in_url = strpos($url,'id=');
+		if(isset($_GET['id']) and !$id_in_url) $url.='id='.$_GET['id'].'&amp;';
 		$data.= '<div id="tnt_pagination">';
 		if($getjfpage>4){
 			$pgstart = $getjfpage-4;
@@ -157,12 +158,19 @@ function srz_fb_render_fullpage_gallery($page,$images,$common_options){
 	return $data;
 }
 
-function srz_fb_get_pagetitle($pageid,$set){
+function srz_fb_get_pagetitle($pageid,$set,$cachetime){
+	$pageidback = $pageid.'back';
 	$contents = get_transient(md5($pageid));
 	if(!$contents or isset($_GET['forcesync'])){
 		$url = "http://graph.facebook.com/" .$pageid. "/albums?fields=name,id,count,cover_photo";
 		$contents = srz_fb_remote_to_data($url);
-		set_transient(md5($pageid), $contents, 5);
+		if(strlen($contents)<=150){
+			$contents = get_transient(md5($pageidback));
+		}
+		if(strlen($contents)>150){
+			set_transient(md5($pageid), $contents, $cachetime);
+			set_transient(md5($pageidback), $contents, 1000000);
+		}
 	}
 	$json = json_decode( $contents );
 	foreach( $json->data as $obj ){
@@ -177,13 +185,19 @@ function srz_fb_get_fb_gallery($pageid,$shuffle_albums,$cachetime){
 		print_r($pageid);
 		echo '</pre>';
 	}
+	$pageidback = $pageid.'back';
 	$albumids_arr = srz_fb_extract_ids($albumids_exclude);
-
 	$contents = get_transient(md5($pageid));
 	if(!$contents or isset($_GET['forcesync'])){
 		$url = "http://graph.facebook.com/" .$pageid. "/albums?fields=name,id,count,cover_photo";
 		$contents = srz_fb_remote_to_data($url);
-		set_transient(md5($pageid), $contents, $cachetime);
+		if(strlen($contents)<=150){
+			$contents = get_transient(md5($pageidback));
+		}
+		if(strlen($contents)>150){
+			set_transient(md5($pageid), $contents, $cachetime);
+			set_transient(md5($pageidback), $contents, 1000000);
+		}
 	}
 	if(isset($_GET['debugjfb'])){
 		echo 'Dumping Contents<pre>';
